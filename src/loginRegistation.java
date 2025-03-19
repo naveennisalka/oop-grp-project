@@ -15,8 +15,8 @@ public class loginRegistation {
         String email = scanner.nextLine();
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
-        System.out.print("Enter user type \n 1. admin\n 2. instructor\n 3.student\n\n >>>  ");
-        String userType = scanner.nextLine();
+        System.out.print("\nEnter user type \n 1. admin\n 2. instructor\n 3. student\n\n >>>  ");
+        int userType = scanner.nextInt();
 
         if (!validation.isValidEmail(email)) {
             System.out.println("Invalid email format. Please try again.");
@@ -27,13 +27,13 @@ public class loginRegistation {
         String sql = "";
 
         switch (userType) {
-            case "1":
+            case 3:
                 sql = "SELECT * FROM students WHERE email = ? AND password = ?";
                 break;
-            case "2":
+            case 2:
                 sql = "SELECT * FROM instructors WHERE email = ? AND password = ? AND approved = 1";
                 break;
-            case "3":
+            case 1:
                 sql = "SELECT * FROM admin WHERE email = ? AND password = ?";
                 break;
             default:
@@ -52,13 +52,13 @@ public class loginRegistation {
 
                 System.out.println("Welcome, " + name + "!");
 
-                if (userType.equals("student")) {
+                if (userType == 3) {
                     Student student = new Student(id, name, email, password);
                     student.menu(conn);
-                } else if (userType.equals("instructor")) {
+                } else if (userType == 2) {
                     Instructor instructor = new Instructor(id, name, email, password);
                     instructor.menu(conn);
-                } else if (userType.equals("admin")) {
+                } else if (userType == 1) {
                     Admin admin = new Admin(id, name, email, password);
                     admin.menu(conn);
                 }
@@ -73,11 +73,11 @@ public class loginRegistation {
     protected static void register() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n---------------------------------------------");
-        System.out.println("-----------------Registration-----------------   ");
+        System.out.println("---------------- Registration ----------------   ");
         System.out.println("---------------------------------------------\n");
 
-        System.out.print("Enter user type (admin/instructor/student): ");
-        String userType = scanner.nextLine().toLowerCase();
+        System.out.print("Enter user type \n 1. admin\n 2. instructor\n 3.student\n\n >>>  ");
+        int userType = scanner.nextInt();
 
         Connection conn = DatabaseConnection.connect();
         String checkSql = "";

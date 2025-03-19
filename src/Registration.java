@@ -5,15 +5,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Registration{
-    public static void userRegistration(String userType){
+    public static void userRegistration(int userType){
     Connection conn = DatabaseConnection.connect();
     String checkSql = "";
     String insertSql = "";
 
     Scanner scanner = new Scanner(System.in);
         switch (userType) {
-        case "student":
-            System.out.print("Enter full name: ");
+        case 3:
+            System.out.print("Enter full name3: ");
             String studentName = scanner.nextLine();
             String studentEmail = loginRegistation.getEmail(scanner);
             String studentPassword = loginRegistation.getPassword(scanner);
@@ -40,8 +40,8 @@ public class Registration{
             }
             break;
 
-        case "instructor":
-            System.out.print("Enter full name: ");
+        case 2:
+            System.out.print("Enter full name2: ");
             String instructorName = scanner.nextLine();
             String instructorEmail = loginRegistation.getEmail(scanner);
             String instructorPassword = loginRegistation.getPassword(scanner);
@@ -68,8 +68,8 @@ public class Registration{
             }
             break;
 
-        case "admin":
-            System.out.print("Enter full name: ");
+        case 1:
+            System.out.print("Enter full name1: ");
             String adminName = scanner.nextLine();
             String adminEmail = loginRegistation.getEmail(scanner);
             String adminPassword = loginRegistation.getPassword(scanner);

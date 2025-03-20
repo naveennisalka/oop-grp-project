@@ -27,7 +27,13 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("\n---------------------------------------------");
-            System.out.println("Welcome to the Learning Management System");
+            System.out.printf("  ____        _        ____ _               %n");
+            System.out.printf(" | __ ) _   _| |_ ___ / ___| | __ _ ___ ___ %n");
+            System.out.printf(" |  _ \\| | | | __/ _ \\ |   | |/ _` / __/ __|%n");
+            System.out.printf(" | |_) | |_| | ||  __/ |___| | (_| \\__ \\__ \\%n");
+            System.out.printf(" |____/ \\__, |\\__\\___|\\____|_|\\__,_|___/___/%n");
+            System.out.printf("        |___/                               %n");
+            System.out.println("  Welcome to the Learning Management System");
             System.out.println("---------------------------------------------\n");
             System.out.println("1. Login");
             System.out.println("2. Register");

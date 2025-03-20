@@ -11,18 +11,18 @@ public class Instructor extends User {
 
     public void menu(Connection conn) {
         while (true) {
-            System.out.println("\nInstructor Menu");
-            System.out.println("\n---------------------------------------------");
-            System.out.println("-------------   Instructor Menu   -------------   ");
-            System.out.println("---------------------------------------------\n");
+            System.out.println("\n*********************************************");
+            System.out.println("*                                           *");
+            System.out.println("*        📚  INSTRUCTOR MENU  📚           *");
+            System.out.println("*                                           *");
+            System.out.println("*********************************************\n");
             System.out.println("1. Edit Details");
             System.out.println("2. View Student Results");
             System.out.println("3. Add Quiz");
             System.out.println("4. Add/Edit Course");
-            System.out.println("5. View Enrolled Students");
-            System.out.println("6. Send/View Messages");
-            System.out.println("7. Manage Quizzes And Questions");
-            System.out.println("0. Logout");
+            //System.out.println("5. View Enrolled Students");
+            System.out.println("5. Manage Quizzes And Questions");
+            System.out.println("0. Logout\n");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -40,16 +40,14 @@ public class Instructor extends User {
                 case 4:
                     manageCourses(conn);
                     break;
+                //case 5:
+                //    viewEnrolledStudents(conn);
+                //    break;
                 case 5:
-                    viewEnrolledStudents(conn);
-                    break;
-                case 6:
-                    manageMessages();
-                    break;
-                case 7:
                     manageQuizzesAndQuestions(conn);
                     break;
                 case 0:
+                    System.out.println("BYE...");
                     System.out.println("Logging out...");
                     return;
                 default:
@@ -314,9 +312,23 @@ public class Instructor extends User {
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
+
+
         try {
             switch (choice) {
                 case 1:
+
+                    String fetchCoursesSql = "SELECT id, name FROM quizzes WHERE instructor_id = ?";
+                    try (PreparedStatement pstmt = conn.prepareStatement(fetchCoursesSql)) {
+                        pstmt.setInt(1, this.getId());
+                        ResultSet rs = pstmt.executeQuery();
+
+                        System.out.println("Your Quizzes:");
+                        while (rs.next()) {
+                            System.out.println(rs.getInt("id") + ". " + rs.getString("name"));
+                        }
+                    }
+
                     System.out.print("Enter quiz ID to update: ");
                     int quizId = scanner.nextInt();
                     scanner.nextLine();
@@ -336,6 +348,18 @@ public class Instructor extends User {
                     }
                     break;
                 case 2:
+
+                    String fetchCoursesSql1 = "SELECT id, name FROM quizzes WHERE instructor_id = ?";
+                    try (PreparedStatement pstmt = conn.prepareStatement(fetchCoursesSql1)) {
+                        pstmt.setInt(1, this.getId());
+                        ResultSet rs = pstmt.executeQuery();
+
+                        System.out.println("Your Quizzes:");
+                        while (rs.next()) {
+                            System.out.println(rs.getInt("id") + ". " + rs.getString("name"));
+                        }
+                    }
+
                     System.out.print("Enter quiz ID to delete: ");
                     quizId = scanner.nextInt();
                     sql = "DELETE FROM quizzes WHERE id = ? AND instructor_id = ?";
@@ -351,6 +375,30 @@ public class Instructor extends User {
                     }
                     break;
                 case 3:
+                    String fetchCoursesSql11 = "SELECT id, name FROM quizzes WHERE instructor_id = ?";
+                    try (PreparedStatement pstmt = conn.prepareStatement(fetchCoursesSql11)) {
+                        pstmt.setInt(1, this.getId());
+                        ResultSet rs = pstmt.executeQuery();
+
+                        System.out.println("Your Quizzes:");
+                        while (rs.next()) {
+                            System.out.println(rs.getInt("id") + ". " + rs.getString("name"));
+                        }
+                    }
+                    System.out.print("\nEnter quiz ID: ");
+                    int quizId1 = scanner.nextInt();
+
+                    String fetchCoursesSql2 = "SELECT id, question_text FROM questions WHERE quiz_id = ? ";
+                    try (PreparedStatement pstmt = conn.prepareStatement(fetchCoursesSql2)) {
+                        pstmt.setInt(1, quizId1);
+                        ResultSet rs = pstmt.executeQuery();
+
+                        System.out.println("Your Questions:");
+                        while (rs.next()) {
+                            System.out.println(rs.getInt("id") + "  |  " + rs.getString("name"));
+                        }
+                    }
+
                     System.out.print("Enter question ID to update: ");
                     int questionId = scanner.nextInt();
                     scanner.nextLine();
@@ -365,6 +413,29 @@ public class Instructor extends User {
                     }
                     break;
                 case 4:
+                    String fetchCoursesSql111 = "SELECT id, name FROM quizzes WHERE instructor_id = ?";
+                    try (PreparedStatement pstmt = conn.prepareStatement(fetchCoursesSql111)) {
+                        pstmt.setInt(1, this.getId());
+                        ResultSet rs = pstmt.executeQuery();
+
+                        System.out.println("Your Quizzes:");
+                        while (rs.next()) {
+                            System.out.println(rs.getInt("id") + ". " + rs.getString("name"));
+                        }
+                    }
+                    System.out.print("\nEnter quiz ID: ");
+                    int quizId2 = scanner.nextInt();
+
+                    String fetchCoursesSql22 = "SELECT id, question_text FROM questions WHERE quiz_id = ? ";
+                    try (PreparedStatement pstmt = conn.prepareStatement(fetchCoursesSql22)) {
+                        pstmt.setInt(1, quizId2);
+                        ResultSet rs = pstmt.executeQuery();
+
+                        System.out.println("Your Questions:");
+                        while (rs.next()) {
+                            System.out.println(rs.getInt("id") + "  |  " + rs.getString("name"));
+                        }
+                    }
                     System.out.print("Enter question ID to delete: ");
                     questionId = scanner.nextInt();
                     sql = "DELETE FROM questions WHERE id = ?";
@@ -382,12 +453,12 @@ public class Instructor extends User {
         }
     }
 
-
+/*
     private void manageMessages() {
         System.out.println("\nManage Messages");
         // Logic to send and view messages
     }
-
+*/
     private String getEmail(Scanner scanner) {
         while (true) {
             System.out.print("Enter email: ");

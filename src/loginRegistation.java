@@ -8,15 +8,19 @@ public class loginRegistation {
 
     protected static void login() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\n---------------------------------------------");
-        System.out.println("------------------    Login    ----------------   ");
-        System.out.println("---------------------------------------------\n");
+        System.out.println("\n*********************************************");
+        System.out.println("*                                           *");
+        System.out.println("*               🔒  LOGIN  🔒               *");
+        System.out.println("*                                           *");
+        System.out.println("*********************************************\n");
+        System.out.print("| 1. admin | 2. instructor | 3.student  \nEnter user type  >>>  ");
+        int userType = scanner.nextInt();
+        scanner.nextLine();
         System.out.print("Enter email: ");
         String email = scanner.nextLine();
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
-        System.out.print("\nEnter user type \n 1. admin\n 2. instructor\n 3. student\n\n >>>  ");
-        int userType = scanner.nextInt();
+
 
         if (!validation.isValidEmail(email)) {
             System.out.println("Invalid email format. Please try again.");
@@ -50,6 +54,7 @@ public class loginRegistation {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
 
+                System.out.println("\n\n---------------------------------------------\n\n");
                 System.out.println("Welcome, " + name + "!");
 
                 if (userType == 3) {
@@ -72,11 +77,13 @@ public class loginRegistation {
 
     protected static void register() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\n---------------------------------------------");
-        System.out.println("---------------- Registration ----------------   ");
-        System.out.println("---------------------------------------------\n");
+        System.out.println("\n*********************************************");
+        System.out.println("*                                           *");
+        System.out.println("*           📝  REGISTER  📝              *");
+        System.out.println("*                                           *");
+        System.out.println("*********************************************\n");
 
-        System.out.print("Enter user type \n 1. admin\n 2. instructor\n 3.student\n\n >>>  ");
+        System.out.print("| 1. admin | 2. instructor | 3.student  \nEnter user type  >>>  ");
         int userType = scanner.nextInt();
 
         Connection conn = DatabaseConnection.connect();

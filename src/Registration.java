@@ -13,7 +13,7 @@ public class Registration{
     Scanner scanner = new Scanner(System.in);
         switch (userType) {
         case 3:
-            System.out.print("Enter full name3: ");
+            System.out.print("Enter full name : ");
             String studentName = scanner.nextLine();
             String studentEmail = loginRegistation.getEmail(scanner);
             String studentPassword = loginRegistation.getPassword(scanner);
@@ -41,7 +41,7 @@ public class Registration{
             break;
 
         case 2:
-            System.out.print("Enter full name2: ");
+            System.out.print("Enter full name : ");
             String instructorName = scanner.nextLine();
             String instructorEmail = loginRegistation.getEmail(scanner);
             String instructorPassword = loginRegistation.getPassword(scanner);
@@ -69,7 +69,7 @@ public class Registration{
             break;
 
         case 1:
-            System.out.print("Enter full name1: ");
+            System.out.print("Enter full name : ");
             String adminName = scanner.nextLine();
             String adminEmail = loginRegistation.getEmail(scanner);
             String adminPassword = loginRegistation.getPassword(scanner);

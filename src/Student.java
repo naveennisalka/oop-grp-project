@@ -12,15 +12,17 @@ public class Student extends User {
     public void menu(Connection conn) {
         while (true) {
             System.out.println("\nStudent Menu");
-            System.out.println("\n---------------------------------------------");
-            System.out.println("-------------     Student Menu     -------------   ");
-            System.out.println("---------------------------------------------\n");
+            System.out.println("\n*********************************************");
+            System.out.println("*                                           *");
+            System.out.println("*         🎓  STUDENT MENU  🎓            *");
+            System.out.println("*                                           *");
+            System.out.println("*********************************************\n");
             System.out.println("1. Edit My Details");
             System.out.println("2. View My Results");
             System.out.println("3. Answer Quizzes");
             System.out.println("4. Send/View Messages");
             System.out.println("5. Courses");
-            System.out.println("0. Logout");
+            System.out.println("0. Logout\n");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -42,6 +44,7 @@ public class Student extends User {
                     courses(conn);
                     break;
                 case 0:
+                    System.out.println("BYE...");
                     System.out.println("Logging out...");
                     return;
                 default:

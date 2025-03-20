@@ -11,15 +11,17 @@ public class Admin extends User {
 
     public void menu(Connection conn) {
         while (true) {
-            System.out.println("\n---------------------------------------------");
-            System.out.println("-------------     Admin Menu     -------------   ");
-            System.out.println("---------------------------------------------\n");
+            System.out.println("\n*********************************************");
+            System.out.println("*                                           *");
+            System.out.println("*            ⚙️  ADMIN MENU  ⚙️             *");
+            System.out.println("*                                           *");
+            System.out.println("*********************************************\n");
             System.out.println("1. Manage Students");
             System.out.println("2. Manage Instructors");
             System.out.println("3. Manage Courses");
             System.out.println("4. Manage Admins");
-            System.out.println("0. Logout");
-            System.out.print("Choose an option: ");
+            System.out.println("0. Logout\n");
+            System.out.print("Choose an option : ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
@@ -37,6 +39,7 @@ public class Admin extends User {
                     manageAdmins(conn);
                     break;
                 case 0:
+                    System.out.println("BYE...");
                     System.out.println("Logging out...");
                     return;
                 default:
